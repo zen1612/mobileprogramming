@@ -114,11 +114,12 @@ class MainActivity : AppCompatActivity() {
                 android.R.layout.simple_spinner_dropdown_item,
                 categories
             )
+            filterSpinner.setSelection(0)
 
             filterSpinner.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
-                        parent: AdapterView<*>,
+                        parent: AdapterView<*>?,
                         view: android.view.View?,
                         position: Int,
                         id: Long
@@ -126,10 +127,10 @@ class MainActivity : AppCompatActivity() {
                         applyCategoryFilter()
                     }
 
-                    override fun onNothingSelected(parent: AdapterView<*>) {}
+                    override fun onNothingSelected(parent: AdapterView<*>?) {}
                 }
-            
-            
+
+
 
 
 
@@ -228,6 +229,7 @@ class MainActivity : AppCompatActivity() {
                             allBooks.add(book)
                         }
                     }
+                    applyCategoryFilter()
                     Log.d("Data", dataModelList.toString())
                 }
 
